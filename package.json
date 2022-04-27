@@ -1,0 +1,24 @@
+{
+  "name": "test_bot_ds",
+  "version": "1.0.0",
+  "description": "Primera prueba Bot DS",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Julián Villoria",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/opus": "^0.5.0",
+    "discord.js": "^12.5.3",
+    "ffmpeg-static": "^4.3.0",
+    "fs": "^0.0.1-security",
+    "opusscript": "^0.0.8",
+    "ytdl-core": "^4.11.0",
+    "ytpl": "^2.2.1",
+    "ytsr": "^3.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
