@@ -211,7 +211,7 @@ client.on('message', async msg => {
                 cont--
                 temaikenes.splice(listNumber-1, 1)
             }else{
-                msg.reply('Escribi bien pajero')
+                msg.reply('Ingrese un número')
             }
         }else{
             msg.reply('Ingrese a un canal de voz')
