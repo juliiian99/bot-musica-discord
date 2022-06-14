@@ -3,8 +3,9 @@ const client = new Discord.Client();
 const ytdl = require('ytdl-core');
 const ytpl = require('ytpl')
 const ytsr = require('ytsr');
+require('dotenv').config();
 
-client.login('ODQyMzc3NDA1NzU0NTA3Mjc1.YJ0bGA.Bhs2-ANHzZtwenaZP7PopSjuE1o');
+client.login(process.env.TOKEN);
 
 let temaikenes = [];
 let cont = 0;
