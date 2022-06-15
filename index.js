@@ -5,7 +5,7 @@ const ytpl = require('ytpl')
 const ytsr = require('ytsr');
 require('dotenv').config();
 
-client.login('ODQyMzc3NDA1NzU0NTA3Mjc1.YJ0bGA.u2WhWMRT9tBP8uSH95vUm_KBfWk');
+client.login(process.env.TOKEN);
 
 let temaikenes = [];
 let cont = 0;
