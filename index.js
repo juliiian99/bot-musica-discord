@@ -517,9 +517,9 @@ try{
             if(conn.speaking.bitfield == 0){
                 dispatcher = conn.play(ytdl(result.items[0].url), { filter: 'audioonly', volume: 0.5})
                 dispatcher.on('finish', () => {
-                    if(temaikenes.length == 0){
-                        timeout = setTimeout(() => { conn.disconnect() }, 5000 * 60) //Después de 5 min se desconecta
-                    }
+                    // if(temaikenes.length == 0){
+                    //     timeout = setTimeout(() => { conn.disconnect() }, 5000 * 60) //Después de 5 min se desconecta
+                    // }
                     if(!loop){
                         temaikenes.shift()
                         again()
@@ -537,9 +537,9 @@ try{
         }
     }
 
-    if(dispatcher != null && timeout != null){
-        dispatcher.on('start', () => {clearTimeout(timeout)})
-    }
+    // if(dispatcher != null && timeout != null){
+    //     dispatcher.on('start', () => {clearTimeout(timeout)})
+    // }
 
 
     /*
