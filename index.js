@@ -436,7 +436,7 @@ try{
     if (msg.content.match('^°commands$')) {
         const cmds = new Discord.MessageEmbed()
         .setColor(0xff0000)
-        .setTitle("Temas en tu cola")
+        .setTitle("Comandos")
         .setDescription(
             commands.map((obj) => {
                 return `** ${obj.com} ** -->  ${obj.msg} \n`
