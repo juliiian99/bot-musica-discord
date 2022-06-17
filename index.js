@@ -439,7 +439,7 @@ try{
         .setTitle("Temas en tu cola")
         .setDescription(
             commands.map((obj) => {
-                return `__ ** ${obj.com} ** __ -->  ${obj.msg} \n`
+                return `** ${obj.com} ** -->  ${obj.msg} \n`
             })
         )
         msg.channel.send(cmds)
