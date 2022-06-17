@@ -7,6 +7,19 @@ require('dotenv').config();
 
 client.login(process.env.TOKEN);
 
+let commands = [
+    {com: '°list', msg: 'Lista de canciones'}, 
+    {com: '°p', msg: 'Busca canción y la agrega a la cola'},
+    {com: '°l', msg: 'Para que no se rompa al buscar por link'},
+    {com: '°clear', msg: 'Borra mensajes del chat'},
+    {com: '°leave', msg: 'Desconecta al bot'},
+    {com: '°loop', msg: 'Activa el loop'},
+    {com: '°playlist', msg: 'Crea una lista con una playlist de youtube'},
+    {com: '°fs', msg: 'Skipea a la cancion siguiente'},
+    {com: '°fs [numero]', msg: 'Skipea al numero en la lista'},
+    {com: '°skip [numero]', msg: 'Elimina y skipea las canciones de la lista segun el numero ingresado'},
+    {com: '°rm [numero]', msg: 'Elimina la cancion en la lista del numero ingresado'},
+];
 let temaikenes = [];
 let cont = 0;
 let loop = false;
@@ -420,6 +433,18 @@ try{
         msg.channel.send(listado)
     }
 
+    if (msg.content.match('^°commands$')) {
+        const cmds = new Discord.MessageEmbed()
+        .setColor(0xff0000)
+        .setTitle("Temas en tu cola")
+        .setDescription(
+            commands.map((obj) => {
+                return `__ ** ${obj.com} ** __ -->  ${obj.msg} \n`
+            })
+        )
+        msg.channel.send(cmds)
+    }
+
     if (msg.content.match('^°p .+$')) {
         if(msg.member.voice.channel){
             clearTimeout();
@@ -515,19 +540,23 @@ try{
             const result = await ytsr(filter1.url, {pages: 1, gl:'ar', hl:'es'})
             conn = await msg.member.voice.channel.join()
             if(conn.speaking.bitfield == 0){
-                dispatcher = conn.play(ytdl(result.items[0].url), { filter: 'audioonly', volume: 0.5})
-                dispatcher.on('finish', () => {
-                    // if(temaikenes.length == 0){
-                    //     timeout = setTimeout(() => { conn.disconnect() }, 5000 * 60) //Después de 5 min se desconecta
-                    // }
-                    if(!loop){
-                        temaikenes.shift()
-                        again()
-                    }else{
-                        cont++
-                        again()
-                    }
-                })
+                if(result.items[0].url !== undefined){
+                    dispatcher = conn.play(ytdl(result.items[0].url), { filter: 'audioonly', volume: 0.5})
+                    dispatcher.on('finish', () => {
+                        // if(temaikenes.length == 0){
+                        //     timeout = setTimeout(() => { conn.disconnect() }, 5000 * 60) //Después de 5 min se desconecta
+                        // }
+                        if(!loop){
+                            temaikenes.shift()
+                            again()
+                        }else{
+                            cont++
+                            again()
+                        }
+                    })
+                }else{
+                    temaikenes.shift();
+                }
             }
         }else{
             if(loop){
