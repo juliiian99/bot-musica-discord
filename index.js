@@ -19,6 +19,11 @@ let commands = [
     {com: '°fs [numero]', msg: 'Skipea al numero en la lista'},
     {com: '°skip [numero]', msg: 'Elimina y skipea las canciones de la lista segun el numero ingresado'},
     {com: '°rm [numero]', msg: 'Elimina la cancion en la lista del numero ingresado'},
+    {com: '°bzrp', msg: 'Playlist de bzrp'},
+    {com: '°lpda', msg: 'Playlist de las pastillas'},
+    {com: '°duko', msg: 'Playlist del dukoide'},
+    {com: '°ferpa', msg: 'Playlist de ferpinhio'},
+
 ];
 let temaikenes = [];
 let cont = 0;
